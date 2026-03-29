@@ -1,24 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class ObstacleBehaviour : ObjectToPool
 {
-    [SerializeField] private int speed;
-    [SerializeField] private Vector2 position;
-    private Rigidbody2D rb;
+    [SerializeField] protected Vector2 position;
 
-    private void Awake()
+    protected virtual void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
+        SetPosition();
     }
-    private void OnEnable()
+
+    protected virtual void SetPosition()
     {
         transform.position = position;
-        rb.linearVelocity = Vector2.left * speed;
-    }
-    private void OnDisable()
-    {
-        rb.linearVelocity = Vector2.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

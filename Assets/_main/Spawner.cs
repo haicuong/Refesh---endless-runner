@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Spawner Data")]
     [SerializeField] int initialSpawn;
     [SerializeField] float timeGap;
     [SerializeField] ObjectToPool _prefab;
@@ -13,12 +14,12 @@ public class Spawner : MonoBehaviour
         pool = new(_prefab, initialSpawn, this.transform);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         InvokeRepeating("Spawn", 2, timeGap);
     }
 
-    void Spawn()
+    protected virtual void Spawn()
     {
         ObjectToPool obj = pool.GetObject();
         obj.gameObject.SetActive(true);
