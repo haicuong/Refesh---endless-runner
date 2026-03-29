@@ -371,7 +371,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FollowSplinePath
   spline: {fileID: 68991104}
   duration: 4
-  positionUpdateMagnitude: 0.2
 --- !u!1 &426263450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65d218de2a960943a995e619a2a9928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WalkerMoving
-  position: {x: 7.82, y: -0.92}
+  position: {x: 11.18, y: -0.92}
   target: {x: 5, y: -0.92}
   duration: 4
 --- !u!212 &1901927599
@@ -1183,7 +1182,7 @@ Transform:
   m_GameObject: {fileID: 1901927597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.82, y: -0.92, z: 0}
+  m_LocalPosition: {x: 11.18, y: -0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

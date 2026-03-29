@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(ObjectToPool))]
-public class MoveLeft : MonoBehaviour
+public class MoveLeftRig : MonoBehaviour
 {
     [SerializeField] private int speed;
 

@@ -4,8 +4,9 @@ public class ObstacleBehaviour : MonoBehaviour
 {
     [SerializeField] protected Vector2 position;
 
-    Transform self;
-    void Awake(){
+    protected Transform self;
+    protected virtual void Awake()
+    {
         self = GetComponent<Transform>();
     }
     protected virtual void OnEnable()

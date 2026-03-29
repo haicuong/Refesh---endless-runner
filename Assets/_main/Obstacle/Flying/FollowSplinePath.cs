@@ -6,7 +6,6 @@ public class FollowSplinePath : MonoBehaviour
 {
     [SerializeField] SplineContainer spline;
     [SerializeField] float duration;
-    [SerializeField] float positionUpdateMagnitude = 0.07f;
 
     bool reverse;
     float timeRatio;
