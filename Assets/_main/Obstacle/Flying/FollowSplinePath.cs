@@ -6,6 +6,7 @@ public class FollowSplinePath : MonoBehaviour
 {
     [SerializeField] SplineContainer spline;
     [SerializeField] float duration;
+    [SerializeField] float positionUpdateMagnitude = 0.07f;
 
     bool reverse;
     float timeRatio;
@@ -36,9 +37,16 @@ public class FollowSplinePath : MonoBehaviour
             timeRatio += Time.deltaTime / duration;
         else timeRatio -= Time.deltaTime / duration;
     }
+
+    Vector2 cachedPosition;
     void Move()
     {
         float3 f3pos = spline.EvaluatePosition(timeRatio);
-        self.position = new Vector2(f3pos.x, f3pos.y);
+        Vector2 pos = new(f3pos.x, f3pos.y);
+        if ((pos - cachedPosition).sqrMagnitude >= positionUpdateMagnitude * positionUpdateMagnitude)
+        {
+            cachedPosition = pos;
+            self.position = new Vector2(pos.x, pos.y);
+        }
     }
 }

@@ -1,14 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(ObjectToPool))]
 public class MoveLeft : MonoBehaviour
 {
     [SerializeField] private int speed;
 
     Rigidbody2D rb;
+    ObjectToPool pooler;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        pooler = GetComponent<ObjectToPool>();
     }
 
     private void OnEnable()
@@ -27,5 +29,9 @@ public class MoveLeft : MonoBehaviour
     private void Stop()
     {
         rb.linearVelocity = Vector2.zero;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("WallLimit")) pooler.ReturnToPool();
     }
 }

@@ -20,7 +20,6 @@ public class LookAtObject : MonoBehaviour
     void RotateUpdate()
     {
         Vector2 direction = (target.position - _self.position).normalized;
-        Debug.Log("Rate: " + (direction - cachedDirection).sqrMagnitude);
         if ((direction - cachedDirection).sqrMagnitude >= rotationUpdateRate * rotationUpdateRate)
         {
             Rotate(direction);

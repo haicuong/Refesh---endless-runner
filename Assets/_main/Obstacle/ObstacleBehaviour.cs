@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleBehaviour : ObjectToPool
+public class ObstacleBehaviour : MonoBehaviour
 {
     [SerializeField] protected Vector2 position;
 
@@ -12,10 +12,5 @@ public class ObstacleBehaviour : ObjectToPool
     protected virtual void SetPosition()
     {
         transform.position = position;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("WallLimit")) ReturnToPool();
     }
 }

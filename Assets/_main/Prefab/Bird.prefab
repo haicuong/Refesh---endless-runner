@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1262122928268333512}
   - component: {fileID: 1190915140789975506}
   - component: {fileID: 5356623135484364239}
+  - component: {fileID: 6538527746807797066}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Obstacle
@@ -185,3 +186,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
   speed: 4
+--- !u!114 &6538527746807797066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574342458489653985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eccdf7b46bc9ff46ba9e75adf8a2ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectToPool

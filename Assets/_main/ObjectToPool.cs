@@ -10,7 +10,7 @@ public class ObjectToPool : MonoBehaviour
         _returnToPool = returnToPool;
     }
 
-    protected void ReturnToPool()
+    public void ReturnToPool()
     {
         _returnToPool?.Invoke(this.gameObject);
     }

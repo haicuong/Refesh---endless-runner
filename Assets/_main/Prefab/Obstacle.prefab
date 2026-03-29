@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5057762150916407328}
   - component: {fileID: 6055863287808397749}
   - component: {fileID: 8040233160172196749}
+  - component: {fileID: 6464770085668157264}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
   speed: 7
+--- !u!114 &6464770085668157264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950831538816042743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eccdf7b46bc9ff46ba9e75adf8a2ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectToPool
