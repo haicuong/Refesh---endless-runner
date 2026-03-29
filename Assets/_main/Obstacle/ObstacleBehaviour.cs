@@ -4,6 +4,10 @@ public class ObstacleBehaviour : MonoBehaviour
 {
     [SerializeField] protected Vector2 position;
 
+    Transform self
+    void Awake(){
+        self = GetComponent<Transform>();
+    }
     protected virtual void OnEnable()
     {
         SetPosition();
@@ -11,6 +15,6 @@ public class ObstacleBehaviour : MonoBehaviour
 
     protected virtual void SetPosition()
     {
-        transform.position = position;
+        self.position = position;
     }
 }
