@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b508aceb8082242af029d5dbc6c5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  initialSpawn: 10
-  timeGap: 3
+  initialSpawn: 1
+  timeGap: 1
   _prefab: {fileID: 6055863287808397749, guid: 3556c32b553137c4ca4e983ce612067f, type: 3}
 --- !u!4 &426263452
 Transform:
@@ -650,7 +650,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1054448856
 MonoBehaviour:
@@ -665,7 +665,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   jumpPower: 15
-  maxJump: 3
+  maxJump: 4
+  bufferJumpTime: 0.2
+  minJumpTimeGap: 0.2
 --- !u!212 &1054448857
 SpriteRenderer:
   serializedVersion: 2

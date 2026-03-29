@@ -3,12 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float jumpPower;
-    [SerializeField] private int maxJump;
+    [SerializeField] float jumpPower;
+    [SerializeField] int maxJump;
+    [SerializeField] float bufferJumpTime;
+    [SerializeField] float minJumpTimeGap;
 
-    private Rigidbody2D rb;
-    private bool onJump;
-    private int jumpCounter;
+    Rigidbody2D rb;
+    int jumpCounter;
+    float jumpInputTime;
+    float onGroundTime;
+    int jumpRequest;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,8 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"Jump left: {jumpCounter}");
-        JumpHandler();
+        JumpInputHandler();
     }
 
     private void FixedUpdate()
@@ -30,26 +34,39 @@ public class PlayerController : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.Space);
     }
-
-    void JumpHandler()
+    void JumpInputHandler()
     {
         if (!InputJump()) return;
+        jumpInputTime = Time.time;
         if (jumpCounter <= 0) return;
-        onJump = true;
-        jumpCounter -= 1;
+        JumpHandler();
     }
+    void JumpHandler()
+    {
+        jumpCounter--;
+        jumpRequest++;
+    }
+    void JumpCountReset() => jumpCounter = maxJump;
 
+    float lastJumpTime;
     void Jump()
     {
-        if (onJump)
+        Debug.Log($"Jump Request: {jumpRequest}");
+        if (jumpRequest > 0 && Time.time - lastJumpTime >= minJumpTimeGap)
         {
             rb.linearVelocity = Vector2.up * jumpPower;
-            onJump = false;
+            jumpRequest--;
+            lastJumpTime = Time.time;
         }
     }
 
     void OnGround(PlayerOnGround playerOnGround)
     {
-        jumpCounter = maxJump;
+        onGroundTime = Time.time;
+        JumpCountReset();
+        if (onGroundTime - jumpInputTime <= bufferJumpTime)
+        {
+            JumpHandler();
+        }
     }
 }

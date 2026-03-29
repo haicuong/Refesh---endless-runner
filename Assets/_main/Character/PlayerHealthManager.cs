@@ -13,7 +13,7 @@ public class PlayerHealthManager : MonoBehaviour
     void OnDamage(PlayerOnDamage onDamage)
     {
         playerHealthCounter--;
-        Debug.Log($"Health: {playerHealthCounter}");
+        //Debug.Log($"Health: {playerHealthCounter}");
         CheckDead();
     }
     void CheckDead()
