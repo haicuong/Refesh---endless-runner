@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float jumpPower;
+    [SerializeField] float downPower;
     [SerializeField] int maxJump;
     [SerializeField] float bufferJumpTime;
     [SerializeField] float minJumpTimeGap;
@@ -13,27 +14,56 @@ public class PlayerController : MonoBehaviour
     float jumpInputTime;
     float onGroundTime;
     int jumpRequest;
+    bool isGround;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         EventBus<PlayerOnGround>.Subscribe(OnGround);
+        EventBus<PlayerLeaveGround>.Subscribe(LeaveGround);
     }
 
     private void Update()
     {
         JumpInputHandler();
+        DownInputHandler();
     }
 
     private void FixedUpdate()
     {
         Jump();
+        DownHandler();
     }
 
     bool InputJump()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.Space)
+            || Input.GetKeyDown(KeyCode.W)
+            || Input.GetKeyDown(KeyCode.UpArrow);
     }
+
+    bool InputDown()
+    {
+        return Input.GetKeyDown(KeyCode.S)
+            || Input.GetKeyDown(KeyCode.DownArrow);
+    }
+    void DownInputHandler()
+    {
+        if (!InputDown()) return;
+        if (isGround) return;
+        downRequest = true;
+    }
+
+    bool downRequest;
+    void DownHandler()
+    {
+        if (downRequest)
+        {
+            rb.linearVelocity = Vector2.down * downPower;
+            downRequest = false;
+        }
+    }
+
     void JumpInputHandler()
     {
         if (!InputJump()) return;
@@ -63,10 +93,16 @@ public class PlayerController : MonoBehaviour
     void OnGround(PlayerOnGround playerOnGround)
     {
         onGroundTime = Time.time;
+        isGround = true;
         JumpCountReset();
         if (onGroundTime - jumpInputTime <= bufferJumpTime)
         {
             JumpHandler();
         }
+    }
+
+    void LeaveGround(PlayerLeaveGround playerLeaveGround)
+    {
+        isGround = false;
     }
 }

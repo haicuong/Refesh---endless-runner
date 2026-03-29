@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   jumpPower: 15
+  downPower: 19
   maxJump: 4
   bufferJumpTime: 0.2
   minJumpTimeGap: 0.2
