@@ -43,10 +43,6 @@ public class FollowSplinePath : MonoBehaviour
     {
         float3 f3pos = spline.EvaluatePosition(timeRatio);
         Vector2 pos = new(f3pos.x, f3pos.y);
-        if ((pos - cachedPosition).sqrMagnitude >= positionUpdateMagnitude * positionUpdateMagnitude)
-        {
-            cachedPosition = pos;
-            self.position = new Vector2(pos.x, pos.y);
-        }
+        self.position = new Vector2(pos.x, pos.y);
     }
 }
