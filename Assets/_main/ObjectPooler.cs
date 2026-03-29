@@ -30,7 +30,7 @@ public class ObjectPooler<T> where T : ObjectToPool
 
     public T GetObject()
     {
-        if (pool.Count >= 0)
+        if (pool.Count > 0)
             return pool.Dequeue();
         CreateObject();
         return pool.Dequeue();
