@@ -948,7 +948,6 @@ GameObject:
   - component: {fileID: 1054448859}
   - component: {fileID: 1054448861}
   - component: {fileID: 1054448860}
-  - component: {fileID: 1054448862}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1135,22 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45375b5f48b4b4dbf4a09587e1a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDamageListener
-  maxHealth: 10
---- !u!114 &1054448862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054448854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e1397fecc92144694108491c17e9ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMediator
-  controller: {fileID: 1054448856}
-  collisionHandler: {fileID: 1054448860}
-  healthManager: {fileID: 1054448861}
+  playerHealth: 3
 --- !u!114 &1305920072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6464770085668157264, guid: 3556c32b553137c4ca4e983ce612067f, type: 3}

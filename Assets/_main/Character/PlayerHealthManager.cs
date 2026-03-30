@@ -1,26 +1,13 @@
-using UnityEngine;
-
-public class PlayerHealthManager : MonoBehaviour
+public class PlayerHealthManager : Health
 {
-    [SerializeField] private int playerHealth;
-
-    private int playerHealthCounter;
-    private void Awake()
+    public override void TakeDamage(float damage)
     {
-        playerHealthCounter = playerHealth;
-        EventBus<PlayerOnDamage>.Subscribe(OnDamage);
+        base.TakeDamage(damage);
+        EventBus<PLayerOnHealthChange>.Publish(new PLayerOnHealthChange(health));
     }
-    void OnDamage(PlayerOnDamage onDamage)
+    protected override void CheckDead(float health)
     {
-        playerHealthCounter--;
-        //Debug.Log($"Health: {playerHealthCounter}");
-        CheckDead();
-    }
-    void CheckDead()
-    {
-        if (playerHealthCounter <= 0)
-        {
-            EventBus<PlayerOnDead>.Publish(new PlayerOnDead());
-        }
+        base.CheckDead(health);
+        if (health <= 0) EventBus<PlayerOnDead>.Publish(new PlayerOnDead());
     }
 }

@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        EventBus<PlayerOnGround>.Subscribe(OnGround);
-        EventBus<PlayerLeaveGround>.Subscribe(LeaveGround);
+        //EventBus<PlayerOnGround>.Subscribe(OnGround);
+        //EventBus<PlayerLeaveGround>.Subscribe(LeaveGround);
     }
 
     private void Update()
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
     float lastJumpTime;
     void Jump()
     {
-        Debug.Log($"Jump Request: {jumpRequest}");
         if (jumpRequest > 0 && Time.time - lastJumpTime >= minJumpTimeGap)
         {
             rb.linearVelocity = Vector2.up * jumpPower;
@@ -90,19 +89,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnGround(PlayerOnGround playerOnGround)
+    public void OnGround(bool onGround)
+    {
+        Debug.Log($"On ground: {onGround}");
+        isGround = onGround;
+        if (!isGround) return;
+        JumpCountReset();
+        JumpBufferCheck();
+    }
+
+    void JumpBufferCheck()
     {
         onGroundTime = Time.time;
-        isGround = true;
-        JumpCountReset();
         if (onGroundTime - jumpInputTime <= bufferJumpTime)
         {
             JumpHandler();
         }
-    }
-
-    void LeaveGround(PlayerLeaveGround playerLeaveGround)
-    {
-        isGround = false;
     }
 }

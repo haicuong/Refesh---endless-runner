@@ -1,13 +1,17 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
+    public event Action<bool> OnGround;
+    public event Action<float> OnTakeDamage;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            EventBus<PlayerOnGround>.Publish(new PlayerOnGround());
+            Debug.Log("On Ground!");
+            OnGround?.Invoke(true);
         }
     }
 
@@ -15,7 +19,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            EventBus<PlayerLeaveGround>.Publish(new PlayerLeaveGround());
+            OnGround?.Invoke(false);
         }
     }
 
@@ -23,7 +27,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            EventBus<PlayerOnDamage>.Publish(new PlayerOnDamage());
+            OnTakeDamage?.Invoke(1);
         }
     }
 }
