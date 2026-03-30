@@ -22,6 +22,8 @@ public class FollowSplinePath : MonoBehaviour
 
     void TimeRatioCounter()
     {
+        float step = Time.deltaTime / duration;
+        timeRatio += !reverse? step : -step;
         if (timeRatio <= 0)
         {
             timeRatio = 0;
@@ -32,9 +34,6 @@ public class FollowSplinePath : MonoBehaviour
             timeRatio = 1;
             reverse = true;
         }
-        if (!reverse)
-            timeRatio += Time.deltaTime / duration;
-        else timeRatio -= Time.deltaTime / duration;
     }
 
     Vector2 cachedPosition;
