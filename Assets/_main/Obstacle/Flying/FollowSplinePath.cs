@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class FollowSplinePath : MonoBehaviour
 {
     [SerializeField] SplineContainer spline;
@@ -9,10 +10,10 @@ public class FollowSplinePath : MonoBehaviour
 
     bool reverse;
     float timeRatio;
-    Transform self;
+    Rigidbody2D rb;
     private void Awake()
     {
-        self = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -23,7 +24,7 @@ public class FollowSplinePath : MonoBehaviour
     void TimeRatioCounter()
     {
         float step = Time.deltaTime / duration;
-        timeRatio += !reverse? step : -step;
+        timeRatio += !reverse ? step : -step;
         if (timeRatio <= 0)
         {
             timeRatio = 0;
@@ -41,6 +42,6 @@ public class FollowSplinePath : MonoBehaviour
     {
         float3 f3pos = spline.EvaluatePosition(timeRatio);
         Vector2 pos = new(f3pos.x, f3pos.y);
-        self.position = new Vector2(pos.x, pos.y);
+        rb.MovePosition(new Vector2(pos.x, pos.y));
     }
 }
