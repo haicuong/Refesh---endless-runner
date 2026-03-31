@@ -1,23 +1,24 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class WalkerBehaviour : ObstacleBehaviour
+public class WalkerMovement : MonoBehaviour
 {
+    [SerializeField] Vector2 startPos;
     [SerializeField] Vector2 target;
     [SerializeField] float duration;
 
+    public event Action OnEntered;
+    public event Action OnExited;
+
     Rigidbody2D rb;
     float elapsedTime;
-    Vector2 startPos;
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-        startPos = spawnPosition;
         rb = GetComponent<Rigidbody2D>();
     }
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         ResetTime();
     }
 
@@ -39,6 +40,8 @@ public class WalkerBehaviour : ObstacleBehaviour
         if (ratio >= 1)
         {
             entered = !entered;
+            if (entered) OnEntered?.Invoke();
+            else OnExited?.Invoke();
             ResetTime();
         }
     }

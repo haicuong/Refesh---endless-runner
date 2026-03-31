@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float bufferJumpTime;
     [SerializeField] float minJumpTimeGap;
 
+    [SerializeField] float testSpeedMultiple;
+
     public event Action OnShoot;
 
     Rigidbody2D rb;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        BackgroundBasedMovement.SetSpeedMultiple(testSpeedMultiple);
         JumpInputHandler();
         DownInputHandler();
         ShootInputHandler();

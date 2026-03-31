@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleBehaviour : MonoBehaviour
+public class AutoSetPosition : MonoBehaviour
 {
     [SerializeField] protected Vector2 spawnPosition;
 

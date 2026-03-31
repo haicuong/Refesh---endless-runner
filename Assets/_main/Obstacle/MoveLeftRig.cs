@@ -13,16 +13,19 @@ public class MoveLeftRig : MonoBehaviour
 
     private void OnEnable()
     {
+        BackgroundBasedMovement.OnSpeedMultipleChange += Move;
         Move();
+
     }
     private void OnDisable()
     {
+        BackgroundBasedMovement.OnSpeedMultipleChange -= Move;
         Stop();
     }
 
     private void Move()
     {
-        rb.linearVelocity = Vector2.left * speed;
+        rb.linearVelocity = BackgroundBasedMovement.SpeedMultiple * speed * Vector2.left;
     }
     private void Stop()
     {

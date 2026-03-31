@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BirdBehaviour : ObstacleBehaviour
+public class BirdBehaviour : AutoSetPosition
 {
     [SerializeField] private float offsetY;
 

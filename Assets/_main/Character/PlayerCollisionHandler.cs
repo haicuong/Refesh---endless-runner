@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerCollisionHandler : MonoBehaviour
 {
     public event Action<bool> OnGround;
-    public event Action<float> OnTakeDamage;
     private int groundLayer;
 
     private void Awake()
@@ -22,13 +21,5 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == groundLayer)
             OnGround?.Invoke(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            OnTakeDamage?.Invoke(1);
-        }*/
     }
 }
