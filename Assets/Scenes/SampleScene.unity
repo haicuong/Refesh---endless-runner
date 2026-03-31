@@ -561,6 +561,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &476515480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476515482}
+  - component: {fileID: 476515481}
+  m_Layer: 0
+  m_Name: CoinSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &476515481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476515480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b508aceb8082242af029d5dbc6c5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  initialSpawn: 5
+  timeGap: 8
+  _prefab: {fileID: 7304273654660395857, guid: 2ef92569f0f0abf4e965359f6e4945c5, type: 3}
+--- !u!4 &476515482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476515480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509936757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,8 +1228,8 @@ GameObject:
   - component: {fileID: 1054448855}
   - component: {fileID: 1054448859}
   - component: {fileID: 1054448861}
-  - component: {fileID: 1054448860}
   - component: {fileID: 1054448862}
+  - component: {fileID: 1054448863}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -1347,18 +1394,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &1054448860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054448854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66167a4e761be6542817fab4170bbc02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
 --- !u!114 &1054448861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,9 +1421,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMediator
   controller: {fileID: 1054448856}
-  collisionHandler: {fileID: 1054448860}
   healthManager: {fileID: 1054448861}
   shooting: {fileID: 1689693924}
+--- !u!114 &1054448863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054448854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0daa7e6f73d4549941fac080585539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinCollector
 --- !u!1 &1227939970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1531,7 @@ MonoBehaviour:
   initialBulletAmount: 5
   bulletStartRange: 0.7
   direction: {x: 1, y: 0}
-  speed: 10
+  speed: 15
   damage: 1
   allyFaction: 0
   piercing: 0
@@ -1593,6 +1639,7 @@ SceneRoots:
   - {fileID: 156917227}
   - {fileID: 426263452}
   - {fileID: 2119295791}
+  - {fileID: 476515482}
   - {fileID: 1227939972}
   - {fileID: 68991105}
   - {fileID: 393709409}

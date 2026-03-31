@@ -15,7 +15,6 @@ public class ObstacleDamage : Damager
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer != playerLayer) return;
-
         DealDamage(collision.gameObject, damage);
     }
 

@@ -5,8 +5,8 @@ public class ObjectPooling<T> where T : ObjectToPool
 {
     readonly Queue<T> pool = new();
     public Queue<T> Pool => pool;
-    T _prefab;
-    Transform _parent;
+    readonly T _prefab;
+    readonly Transform _parent;
 
     public ObjectPooling(T prefab, int amount, Transform parent = null)
     {

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6447751755063853931}
   - component: {fileID: 8455137344615328342}
   - component: {fileID: 5250027130552007476}
+  - component: {fileID: -4034262054929534216}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5dae066f04ff04a98ce51c00fee523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
-  speed: 7
+  speed: 4
 --- !u!114 &6464770085668157264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +252,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 3
   faction: 1
+--- !u!114 &-4034262054929534216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950831538816042743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f4c7b30fe7d9c4f86c9eceb6562177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleDamage
+  damage: 1

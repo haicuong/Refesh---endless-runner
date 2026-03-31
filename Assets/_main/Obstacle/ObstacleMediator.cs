@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class ObstacleMediator : MonoBehaviour
+public class ObstacleMediator : PoolingObjectMediator
 {
-    [SerializeField] ObjectToPool pooler;
-    [SerializeField] PositionLimitChecker limitChecker;
+    [Header("Obstacle")]
     [SerializeField] Health health;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (pooler != null && limitChecker != null)
-            limitChecker.OnPositionLimit += pooler.ReturnToPool;
-        if (health != null && pooler != null)
-            health.OnDead += pooler.ReturnToPool;
+        base.Awake();
+        if (health != null && Pooler != null)
+            health.OnDead += Pooler.ReturnToPool;
     }
 }

@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Jump Data")]
     [SerializeField] float jumpPower;
     [SerializeField] float downPower;
     [SerializeField] int maxJump;
     [SerializeField] float bufferJumpTime;
     [SerializeField] float minJumpTimeGap;
-
+    [Header("Testing")]
     [SerializeField] float testSpeedMultiple;
 
     public event Action OnShoot;
@@ -20,12 +21,12 @@ public class PlayerController : MonoBehaviour
     float onGroundTime;
     int jumpRequest;
     bool isGround;
+    int groundLayer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //EventBus<PlayerOnGround>.Subscribe(OnGround);
-        //EventBus<PlayerLeaveGround>.Subscribe(LeaveGround);
+        groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     private void Update()
@@ -40,6 +41,18 @@ public class PlayerController : MonoBehaviour
     {
         Jump();
         DownHandler();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer)
+            OnGround(true);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == groundLayer)
+            OnGround(false);
     }
 
     bool InputJump()

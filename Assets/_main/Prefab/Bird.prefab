@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirdBehaviour
   spawnPosition: {x: 11.05, y: 2.27}
+  offsetX: 0
   offsetY: 2
 --- !u!114 &5356623135484364239
 MonoBehaviour:
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5dae066f04ff04a98ce51c00fee523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
-  speed: 4
+  speed: 7
 --- !u!114 &6538527746807797066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,4 +256,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f4c7b30fe7d9c4f86c9eceb6562177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleDamage
-  damage: 0
+  damage: 1
