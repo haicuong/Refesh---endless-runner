@@ -83,29 +83,39 @@ public class PlayerController : MonoBehaviour
         if (!InputJump()) return;
         jumpInputTime = Time.time;
         if (jumpCounter <= 0) return;
-        JumpHandler();
+        JumpRequest();
     }
-    void JumpHandler()
+    void JumpRequest()
     {
         jumpCounter--;
         jumpRequest++;
+    }
+    void CancelJumpRequest()
+    {
+        jumpCounter += jumpRequest;
+        jumpRequest = 0;
     }
     void JumpCountReset() => jumpCounter = maxJump;
 
     float lastJumpTime;
     void Jump()
     {
-        if (jumpRequest > 0 && Time.time - lastJumpTime >= minJumpTimeGap)
+        if (jumpRequest > 0
+            && Time.time - lastJumpTime >= minJumpTimeGap
+            && Time.time - jumpInputTime <= bufferJumpTime)
         {
             rb.linearVelocity = Vector2.up * jumpPower;
             jumpRequest--;
             lastJumpTime = Time.time;
         }
+        else
+        {
+            CancelJumpRequest();
+        }
     }
 
     public void OnGround(bool onGround)
     {
-        Debug.Log($"On ground: {onGround}");
         isGround = onGround;
         if (!isGround) return;
         JumpCountReset();
@@ -117,7 +127,7 @@ public class PlayerController : MonoBehaviour
         onGroundTime = Time.time;
         if (onGroundTime - jumpInputTime <= bufferJumpTime)
         {
-            JumpHandler();
+            JumpRequest();
         }
     }
 }

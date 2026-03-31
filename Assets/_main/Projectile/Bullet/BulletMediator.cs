@@ -15,7 +15,7 @@ public class BulletMediator : MonoBehaviour
         if (bulletDestroy != null)
         {
             if (bulletDamage != null)
-                bulletDamage.OnDamaged += bulletDestroy.OnDamage;
+                bulletDamage.OnDamaged += bulletDestroy.OnDamaged;
             if (pooler != null)
                 bulletDestroy.OnDestroy += pooler.ReturnToPool;
         }

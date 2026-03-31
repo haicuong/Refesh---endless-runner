@@ -6,6 +6,7 @@ public class Shooting : MonoBehaviour
     [Header("Object")]
     [SerializeField] Transform shooter;
     [SerializeField] ObjectToPool bullet;
+    [SerializeField] GameObject parentPool;
     [SerializeField] int initialBulletAmount;
     [SerializeField] float bulletStartRange;
 
@@ -24,7 +25,7 @@ public class Shooting : MonoBehaviour
     protected ProjectileData projectileData;
     private void Awake()
     {
-        pooling = new(bullet, initialBulletAmount);
+        pooling = new(bullet, initialBulletAmount, parentPool.transform);
         SetProjectileData();
         InjectDataAll();
         OnProjectileDataChange += InjectDataAll;

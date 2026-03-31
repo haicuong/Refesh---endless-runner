@@ -8,7 +8,7 @@ public class BulletDestroy : MonoBehaviour
 
     public void SetPenetration(bool penetration) => this.penetration = penetration;
 
-    public void OnDamage()
+    public void OnDamaged()
     {
         if (!penetration) OnDestroy?.Invoke();
     }

@@ -6,14 +6,22 @@ public class PlayerCollisionHandler : MonoBehaviour
 {
     public event Action<bool> OnGround;
     public event Action<float> OnTakeDamage;
+    private int groundLayer;
+
+    private void Awake()
+    {
+        groundLayer = LayerMask.NameToLayer("Ground");
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        OnGround?.Invoke(true);
+        if (collision.gameObject.layer == groundLayer)
+            OnGround?.Invoke(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        OnGround?.Invoke(false);
+        if (collision.gameObject.layer == groundLayer)
+            OnGround?.Invoke(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

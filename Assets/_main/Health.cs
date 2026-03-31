@@ -32,7 +32,7 @@ public class Health : MonoBehaviour, IDamagable
     public virtual void TakeDamage(float damage)
     {
         health = Mathf.Clamp(health - damage, 0, health); ;
-        Debug.Log($"Health: {health}");
+        //Debug.Log($"Health: {health}");
         OnHealthChange?.Invoke(health);
         CheckDead(health);
     }
