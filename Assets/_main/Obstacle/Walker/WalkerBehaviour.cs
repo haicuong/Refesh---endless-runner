@@ -12,7 +12,7 @@ public class WalkerBehaviour : ObstacleBehaviour
     protected override void Awake()
     {
         base.Awake();
-        startPos = position;
+        startPos = spawnPosition;
         rb = GetComponent<Rigidbody2D>();
     }
     protected override void OnEnable()

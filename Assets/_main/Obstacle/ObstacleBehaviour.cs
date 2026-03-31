@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
-    [SerializeField] protected Vector2 position;
+    [SerializeField] protected Vector2 spawnPosition;
 
     private Transform self;
     protected virtual void Awake()
@@ -16,6 +16,6 @@ public class ObstacleBehaviour : MonoBehaviour
 
     protected virtual void SetPosition()
     {
-        self.position = position;
+        self.position = spawnPosition;
     }
 }

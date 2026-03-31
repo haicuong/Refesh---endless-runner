@@ -4,11 +4,21 @@ using UnityEngine;
 public interface IDamagable
 {
     public void TakeDamage(float damage);
+    public Faction Faction { get; }
 }
+
+public enum Faction
+{
+    Player,
+    Obstacle
+}
+
 public class Health : MonoBehaviour, IDamagable
 {
     [SerializeField] float maxHealth;
+    [SerializeField] public Faction faction;
 
+    public Faction Faction => faction;
     public event Action<float> OnHealthChange;
     public event Action OnDead;
 

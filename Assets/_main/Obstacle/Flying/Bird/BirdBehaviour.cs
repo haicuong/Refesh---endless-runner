@@ -6,6 +6,6 @@ public class BirdBehaviour : ObstacleBehaviour
 
     protected override void SetPosition()
     {
-        transform.position = new Vector2(position.x, position.y + Random.Range(-1f, 1f) * offsetY);
+        transform.position = new Vector2(spawnPosition.x, spawnPosition.y + Random.Range(-1f, 1f) * offsetY);
     }
 }

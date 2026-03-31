@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int maxJump;
     [SerializeField] float bufferJumpTime;
     [SerializeField] float minJumpTimeGap;
+
+    public event Action OnShoot;
 
     Rigidbody2D rb;
     int jumpCounter;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         JumpInputHandler();
         DownInputHandler();
+        ShootInputHandler();
     }
 
     private void FixedUpdate()
@@ -42,10 +46,20 @@ public class PlayerController : MonoBehaviour
             || Input.GetKeyDown(KeyCode.UpArrow);
     }
 
+    bool InputShoot()
+    {
+        return Input.GetMouseButtonDown(0);
+    }
+
     bool InputDown()
     {
         return Input.GetKeyDown(KeyCode.S)
             || Input.GetKeyDown(KeyCode.DownArrow);
+    }
+    void ShootInputHandler()
+    {
+        if (!InputShoot()) return;
+        OnShoot?.Invoke();
     }
     void DownInputHandler()
     {

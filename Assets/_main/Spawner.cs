@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] int initialSpawn;
     [SerializeField] float timeGap;
     [SerializeField] ObjectToPool _prefab;
-    private ObjectPooler<ObjectToPool> pool;
+    private ObjectPooling<ObjectToPool> pool;
 
 
     private void Awake()

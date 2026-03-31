@@ -4,6 +4,13 @@ using UnityEngine;
 public class ObjectToPool : MonoBehaviour
 {
     private Action<GameObject> _returnToPool;
+    private Transform _transform;
+    public Transform Transform => _transform;
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
 
     public void Initialize(Action<GameObject> returnToPool)
     {
@@ -12,6 +19,6 @@ public class ObjectToPool : MonoBehaviour
 
     public void ReturnToPool()
     {
-        _returnToPool?.Invoke(this.gameObject);
+        _returnToPool?.Invoke(gameObject);
     }
 }

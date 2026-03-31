@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 6055863287808397749}
   - component: {fileID: 8040233160172196749}
   - component: {fileID: 6464770085668157264}
+  - component: {fileID: 6447751755063853931}
+  - component: {fileID: 8455137344615328342}
+  - component: {fileID: 5250027130552007476}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -181,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d73dd727f00004cad24ed55271c2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleBehaviour
-  position: {x: 11, y: -1.63}
+  spawnPosition: {x: 11, y: -1.79}
 --- !u!114 &8040233160172196749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +210,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eccdf7b46bc9ff46ba9e75adf8a2ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectToPool
+--- !u!114 &6447751755063853931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950831538816042743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b8ced1303513b4ca71cf4ec74ab473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PositionLimitChecker
+--- !u!114 &8455137344615328342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950831538816042743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f316f548fca53a34d95d345cff425ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleMediator
+  pooler: {fileID: 6464770085668157264}
+  limitChecker: {fileID: 6447751755063853931}
+  health: {fileID: 5250027130552007476}
+--- !u!114 &5250027130552007476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5950831538816042743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daf66645680c6b4fae04e75be0b8225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 3
+  faction: 1

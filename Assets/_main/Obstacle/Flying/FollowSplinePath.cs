@@ -37,7 +37,6 @@ public class FollowSplinePath : MonoBehaviour
         }
     }
 
-    Vector2 cachedPosition;
     void Move()
     {
         float3 f3pos = spline.EvaluatePosition(timeRatio);
