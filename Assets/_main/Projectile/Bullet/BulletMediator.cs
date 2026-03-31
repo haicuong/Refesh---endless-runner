@@ -1,14 +1,34 @@
 
 using UnityEngine;
 
-public class BulletMediator : MonoBehaviour
+public class BulletMediator : MonoBehaviour, IProjectileDataInjection
 {
     [SerializeField] ObjectToPool pooler;
     [SerializeField] BulletDamage bulletDamage;
     [SerializeField] BulletMovement bulletMovement;
     [SerializeField] BulletDestroy bulletDestroy;
-    [SerializeField] BulletDataInjection dataInjection;
     [SerializeField] PositionLimitChecker positionLimitChecker;
+
+    public void SetData(ProjectileData data)
+    {
+        bulletDamage.SetDamage(data.Damage, data.AllyFaction);
+        bulletMovement.SetDirection(data.Direction, data.Speed);
+        bulletDestroy.SetPenetration(data.Penetration);
+    }
+    public void SetDamage(float damage, Faction allyFaction)
+    {
+        bulletDamage.SetDamage(damage, allyFaction);
+    }
+
+    public void SetDirection(Vector2 direction, float speed)
+    {
+        bulletMovement.SetDirection(direction, speed);
+    }
+
+    public void SetPenetration(bool penetration)
+    {
+        bulletDestroy.SetPenetration(penetration);
+    }
 
     private void Awake()
     {
@@ -21,15 +41,5 @@ public class BulletMediator : MonoBehaviour
         }
         if (positionLimitChecker != null && pooler != null)
             positionLimitChecker.OnPositionLimit += pooler.ReturnToPool;
-        if (dataInjection != null)
-        {
-            if (bulletMovement != null)
-            {
-                dataInjection.OnSetDirection += bulletMovement.SetDirection;
-            }
-            if (bulletDamage != null) dataInjection.OnSetDamage += bulletDamage.SetDamage;
-            if (bulletDestroy != null) dataInjection.OnSetPenetration += bulletDestroy.SetPenetration;
-
-        }
     }
 }

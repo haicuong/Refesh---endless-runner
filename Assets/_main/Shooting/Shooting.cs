@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] float bulletStartRange;
 
     [Header("Direction")]
-    [SerializeField] Vector2 target;
+    [SerializeField] Vector2 direction;
     [SerializeField] float speed;
 
     [Header("Damage")]
@@ -19,11 +19,13 @@ public class Shooting : MonoBehaviour
     [SerializeField] Faction allyFaction;
     [SerializeField] bool piercing;
 
+    protected float Speed => speed;
+
     public event Action OnProjectileDataChange;
 
     private ObjectPooling<ObjectToPool> pooling;
     protected ProjectileData projectileData;
-    private void Awake()
+    protected virtual void Awake()
     {
         pooling = new(bullet, initialBulletAmount, parentPool.transform);
         SetProjectileData();
@@ -35,7 +37,7 @@ public class Shooting : MonoBehaviour
     {
         projectileData = new ProjectileData
         {
-            Direction = Vector2.right,
+            Direction = direction,
             Speed = speed,
             Damage = damage,
             AllyFaction = allyFaction,

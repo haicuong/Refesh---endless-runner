@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class BulletDamage : MonoBehaviour
+public class BulletDamage : Damager
 {
     Faction allyFaction;
     float damage;
@@ -17,10 +17,20 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IDamagable>(out var component) && component.Faction != allyFaction)
+        DealDamage(collision.gameObject, damage);
+    }
+
+    protected override void DealDamage(GameObject gameObject, float damage)
+    {
+        if (gameObject.gameObject.TryGetComponent<IDamagable>(out var component) && component.Faction != allyFaction)
         {
             component.TakeDamage(damage);
             OnDamaged?.Invoke();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnDamaged?.Invoke();
     }
 }

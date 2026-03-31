@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 3443562426529029601}
   - component: {fileID: 2468497033673547889}
   - component: {fileID: 6156487358283377144}
-  - component: {fileID: 7684077474969244365}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -236,7 +235,6 @@ MonoBehaviour:
   bulletDamage: {fileID: 6150366461462360704}
   bulletMovement: {fileID: 3443562426529029601}
   bulletDestroy: {fileID: 1625246813371397581}
-  dataInjection: {fileID: 7684077474969244365}
   positionLimitChecker: {fileID: 6156487358283377144}
 --- !u!114 &3443562426529029601
 MonoBehaviour:
@@ -274,15 +272,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8ced1303513b4ca71cf4ec74ab473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PositionLimitChecker
---- !u!114 &7684077474969244365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8736158769209541425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02a900fe070d43b46ba49a9252cc11f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletDataInjection

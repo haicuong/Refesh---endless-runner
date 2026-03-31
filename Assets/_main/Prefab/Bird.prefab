@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6161235089394482797}
   - component: {fileID: 8822992158806416470}
   - component: {fileID: 5791830369536208149}
+  - component: {fileID: -6783032263617832261}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Obstacle
@@ -242,3 +243,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 3
   faction: 1
+--- !u!114 &-6783032263617832261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574342458489653985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f4c7b30fe7d9c4f86c9eceb6562177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleDamage
+  damage: 0
